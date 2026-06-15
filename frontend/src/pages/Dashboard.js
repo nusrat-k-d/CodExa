@@ -44,8 +44,7 @@ const Dashboard = ({
   };
 
   const currentStats = history.at(-1);
-  console.log("History Array:", history);
-  console.log("Current Stats:", currentStats);
+
 
   if (!hasData) return null;
 
