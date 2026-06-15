@@ -237,7 +237,7 @@ router.post("/", async (req, res) => {
         });
       }
     });
-    
+    console.log("History:", user.history);
     res.json({
       easy,
       medium,

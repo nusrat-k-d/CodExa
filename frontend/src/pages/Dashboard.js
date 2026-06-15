@@ -43,7 +43,9 @@ const Dashboard = ({
     return "text-orange-500";
   };
 
-  const currentStats = history.length > 0 ? history[0] : null;
+  const currentStats = history.at(-1);
+  console.log("History Array:", history);
+  console.log("Current Stats:", currentStats);
 
   if (!hasData) return null;
 
