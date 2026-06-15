@@ -21,6 +21,7 @@ router.post("/", async (req, res) => {
   try {
     // 🔥 Fetch from LeetCode
     const response = await axios.post("https://leetcode.com/graphql", {
+      
       query: `
         query getUserProfile($username: String!) {
           matchedUser(username: $username) {
@@ -51,6 +52,7 @@ router.post("/", async (req, res) => {
     });
 
     const userData = response.data?.data?.matchedUser;
+
 
     if (!userData) {
       return res.status(404).json({ error: "User not found or has no public data on LeetCode." });
@@ -254,10 +256,21 @@ router.post("/", async (req, res) => {
       percentileMessage,
     });
 
-  } catch (err) {
-    console.error("Analyze API Error:", err.message);
-    res.status(500).json({ error: "Failed to fetch data from LeetCode or Internal Server Error" });
-  }
+  } 
+  // catch (err) {
+  //   console.error("Analyze API Error:", err.message);
+  //   res.status(500).json({ error: "Failed to fetch data from LeetCode or Internal Server Error" });
+  // }
+  catch (err) {
+  console.log("FULL ERROR:");
+  console.log(JSON.stringify(err.response?.data, null, 2));
+
+  console.error("Analyze API Error:", err.message);
+
+  res.status(500).json({
+    error: "Failed to fetch data from LeetCode or Internal Server Error"
+  });
+}
 });
 
 module.exports = router;

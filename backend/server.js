@@ -1,3 +1,6 @@
+require("dotenv").config();
+console.log("JWT Secret:", process.env.JWT_SECRET);
+
 const express = require("express");
 const cors = require("cors");
 
@@ -7,6 +10,9 @@ app.use(express.json());
 
 const analyzeRoute = require("./routes/analyze");
 app.use("/analyze", analyzeRoute);
+
+const authRoutes = require("./routes/auth");
+app.use("/auth", authRoutes);
 
 app.listen(5000, () => {
   console.log("Server running on port 5000");
