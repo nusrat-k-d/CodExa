@@ -9,10 +9,12 @@ app.use(cors());
 app.use(express.json());
 
 const analyzeRoute = require("./routes/analyze");
-app.use("/analyze", analyzeRoute);
+const authRoute = require("./routes/auth");
+const analysisRoute = require("./routes/analysis");
 
-const authRoutes = require("./routes/auth");
-app.use("/auth", authRoutes);
+app.use("/analyze", analyzeRoute);
+app.use("/auth", authRoute);
+app.use("/analysis", analysisRoute);
 
 app.listen(5000, () => {
   console.log("Server running on port 5000");
