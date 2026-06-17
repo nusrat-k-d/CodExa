@@ -1,5 +1,6 @@
 import React from 'react';
 import { Activity } from 'lucide-react';
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -15,7 +16,19 @@ const Navbar = () => {
             </span>
           </div>
           <div className="hidden md:flex items-center gap-8">
-            <a href="#features" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Features</a>
+            <Link
+              to="/"
+              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Home
+            </Link>
+
+            <Link
+              to="/reports"
+              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+            >
+              My Reports
+            </Link>
             <a href="https://leetcode.com" target="_blank" rel="noreferrer" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">LeetCode</a>
             <button className="bg-primary text-primary-foreground px-4 py-2 rounded-full text-sm font-semibold hover:opacity-90 transition-opacity shadow-lg shadow-primary/20">
               Get Started
