@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const MyReports = () => {
   const [reports, setReports] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchReports();
@@ -54,8 +56,20 @@ const MyReports = () => {
                   report.createdAt
                 ).toLocaleDateString()}
               </p>
+              <button
+                onClick={() =>
+                  navigate(`/report/${report._id}`, {
+                    state: report,
+                  })
+                }
+                className="mt-4 bg-black text-white px-4 py-2 rounded-xl"
+              >
+                View Details
+              </button>
+
             </div>
           </div>
+
         ))}
       </div>
     </div>
