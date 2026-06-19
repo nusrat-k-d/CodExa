@@ -29,7 +29,12 @@ const Navbar = () => {
             >
               Home
             </Link>
-
+            <Link
+              to="/progress"
+              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Progress
+            </Link>
             <Link
               to="/reports"
               className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"

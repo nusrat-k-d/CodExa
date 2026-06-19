@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import MyReports from "./pages/MyReports";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import Progress from "./pages/Progress";
 
 function App() {
   const token = localStorage.getItem("token");
@@ -19,12 +20,16 @@ function App() {
           element={token ? <MyReports /> : <Login />}
         />
         <Route
+          path="/progress"
+          element={token ? <Progress /> : <Login />}
+        />
+        <Route
           path="/login"
           element={<Login />}
         />
-        <Route 
-          path="/register" 
-          element={<Register />} 
+        <Route
+          path="/register"
+          element={<Register />}
         />
       </Routes>
     </BrowserRouter>

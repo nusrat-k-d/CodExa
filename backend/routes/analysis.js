@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const Analysis = require("../models/Analysis");
+const mongoose = require("mongoose");
 const authMiddleware = require("../middleware/authMiddleware");
 
 router.post("/save", authMiddleware, async (req, res) => {
@@ -35,13 +36,13 @@ router.post("/save", authMiddleware, async (req, res) => {
     });
 
   } catch (err) {
-  console.log("SAVE ANALYSIS ERROR:");
-  console.log(err);
+    console.log("SAVE ANALYSIS ERROR:");
+    console.log(err);
 
-  res.status(500).json({
-    error: err.message,
-  });
-}
+    res.status(500).json({
+      error: err.message,
+    });
+  }
 });
 
 router.get("/my-reports", authMiddleware, async (req, res) => {
@@ -51,6 +52,26 @@ router.get("/my-reports", authMiddleware, async (req, res) => {
     }).sort({ createdAt: -1 });
 
     res.json(reports);
+
+  } catch (err) {
+    console.error(err);
+
+    res.status(500).json({
+      error: "Server Error",
+    });
+  }
+});
+
+
+router.get("/progress", authMiddleware, async (req, res) => {
+  try {
+    const progress = await Analysis.find({
+      userId: req.user.userId,
+    })
+      .select("score total percentile createdAt leetcodeUsername")
+      .sort({ createdAt: 1 });
+
+    res.json(progress);
 
   } catch (err) {
     console.error(err);
