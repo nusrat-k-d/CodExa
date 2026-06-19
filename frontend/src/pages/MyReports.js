@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
+import { Eye, Trash2 } from "lucide-react";
 const MyReports = () => {
   const [reports, setReports] = useState([]);
   const navigate = useNavigate();
@@ -28,7 +28,33 @@ const MyReports = () => {
       console.error(err);
     }
   };
+  const handleDelete = async (id) => {
+    const confirmed = window.confirm(
+      "Are you sure you want to delete this report?"
+    );
 
+    if (!confirmed) return;
+
+    try {
+      const token = localStorage.getItem("token");
+
+      await axios.delete(
+        `http://localhost:5000/analysis/${id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      setReports((prev) =>
+        prev.filter((report) => report._id !== id)
+      );
+
+    } catch (err) {
+      console.error(err);
+    }
+  };
   return (
     <div className="max-w-6xl mx-auto p-8">
       <h1 className="text-4xl font-bold mb-8">
@@ -62,9 +88,18 @@ const MyReports = () => {
                     state: report,
                   })
                 }
-                className="mt-4 bg-black text-white px-4 py-2 rounded-xl"
+                className="flex items-center gap-2 bg-black text-white px-5 py-2 rounded-xl"
               >
-                View Details
+                <Eye size={18} />
+                View
+              </button>
+
+              <button
+                onClick={() => handleDelete(report._id)}
+                className="flex items-center gap-2 border border-red-500 text-red-500 px-5 py-2 rounded-xl"
+              >
+                <Trash2 size={18} />
+                Delete
               </button>
 
             </div>

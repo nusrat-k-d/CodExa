@@ -82,4 +82,30 @@ router.get("/progress", authMiddleware, async (req, res) => {
   }
 });
 
+router.delete("/:id", authMiddleware, async (req, res) => {
+  try {
+    const report = await Analysis.findOneAndDelete({
+      _id: req.params.id,
+      userId: req.user.userId,
+    });
+
+    if (!report) {
+      return res.status(404).json({
+        error: "Report not found",
+      });
+    }
+
+    res.json({
+      message: "Report deleted successfully",
+    });
+
+  } catch (err) {
+    console.error(err);
+
+    res.status(500).json({
+      error: "Server Error",
+    });
+  }
+});
+
 module.exports = router;
