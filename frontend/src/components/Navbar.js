@@ -1,8 +1,15 @@
 import React from 'react';
+import { useNavigate } from "react-router-dom";
 import { Activity } from 'lucide-react';
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    navigate("/login");
+    window.location.reload();
+  };
   return (
     <nav className="fixed top-0 w-full z-50 transition-all duration-300">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -30,8 +37,11 @@ const Navbar = () => {
               My Reports
             </Link>
             <a href="https://leetcode.com" target="_blank" rel="noreferrer" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">LeetCode</a>
-            <button className="bg-primary text-primary-foreground px-4 py-2 rounded-full text-sm font-semibold hover:opacity-90 transition-opacity shadow-lg shadow-primary/20">
-              Get Started
+            <button
+              onClick={handleLogout}
+              className="bg-primary text-primary-foreground px-4 py-2 rounded-full text-sm font-semibold hover:opacity-90 transition-opacity shadow-lg shadow-primary/20"
+            >
+              Logout
             </button>
           </div>
         </div>

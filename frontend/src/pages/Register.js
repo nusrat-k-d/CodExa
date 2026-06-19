@@ -1,56 +1,63 @@
-import { useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import { Eye, EyeOff } from "lucide-react";
 
-const Login = () => {
+const Register = () => {
+    const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
+
     const navigate = useNavigate();
 
-    const handleLogin = async (e) => {
+    const handleRegister = async (e) => {
         e.preventDefault();
 
         try {
             const response = await axios.post(
-                "http://localhost:5000/auth/login",
+                "http://localhost:5000/auth/register",
                 {
+                    name,
                     email,
                     password,
                 }
             );
 
-            localStorage.setItem(
-                "token",
-                response.data.token
-            );
+            console.log(response.data);
+            alert("Registration Successful!");
+            navigate("/login");
 
-            window.location.href = "/";
         } catch (err) {
             console.error(err);
-            alert("Login Failed");
+            alert("Registration Failed");
         }
     };
 
     return (
         <div className="min-h-screen flex items-center justify-center">
             <form
-                onSubmit={handleLogin}
+                onSubmit={handleRegister}
                 className="bg-white p-8 rounded-2xl shadow-lg w-96"
             >
                 <h1 className="text-3xl font-bold mb-6">
-                    Login
+                    Register
                 </h1>
+
+                <input
+                    type="text"
+                    placeholder="Name"
+                    className="w-full border p-3 rounded-lg mb-4"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                />
 
                 <input
                     type="email"
                     placeholder="Email"
                     className="w-full border p-3 rounded-lg mb-4"
                     value={email}
-                    onChange={(e) =>
-                        setEmail(e.target.value)
-                    }
+                    onChange={(e) => setEmail(e.target.value)}
                 />
 
                 <div className="relative mb-4">
@@ -59,7 +66,7 @@ const Login = () => {
                         placeholder="Password"
                         className="w-full border p-3 rounded-lg pr-12"
                         value={password}
-                        autoComplete="current-password"
+                        autoComplete="new-password"
                         onChange={(e) => setPassword(e.target.value)}
                     />
 
@@ -80,11 +87,11 @@ const Login = () => {
                     type="submit"
                     className="w-full bg-black text-white py-3 rounded-lg"
                 >
-                    Login
+                    Register
                 </button>
             </form>
         </div>
     );
 };
 
-export default Login;
+export default Register;
