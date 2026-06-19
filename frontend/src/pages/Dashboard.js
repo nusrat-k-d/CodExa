@@ -53,9 +53,7 @@ const Dashboard = ({
     const handleSaveReport = async () => {
         try {
             console.log(data);
-            // const token = localStorage.getItem("token");
-            const token =
-                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTJmYzIzNzk2ZmVkNTUwYWE0ZjNmYzUiLCJpYXQiOjE3ODE1ODQxMDgsImV4cCI6MTc4MjE4ODkwOH0.ZhWvH5BIg8UGQkSWiKaJdp8iciyWmOhgONn10siFuDg";
+            const token = localStorage.getItem("token");
 
             const response = await axios.post(
                 "http://localhost:5000/analysis/save",

@@ -10,8 +10,7 @@ const MyReports = () => {
 
   const fetchReports = async () => {
     try {
-      const token =
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTJmYzIzNzk2ZmVkNTUwYWE0ZjNmYzUiLCJpYXQiOjE3ODE2OTA1NTQsImV4cCI6MTc4MjI5NTM1NH0.hJqb9htWr0_YzB590RUH7RXie2nTx0t_ilMnSsBST4Q"; // temporary
+      const token = localStorage.getItem("token");
 
       const response = await axios.get(
         "http://localhost:5000/analysis/my-reports",
