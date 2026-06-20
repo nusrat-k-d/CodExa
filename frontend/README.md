@@ -27,7 +27,7 @@ npm install
 npm start
 ```
 
-Server runs on `http://localhost:5000`.
+Server runs on `https://codexa-backend-l5zg.onrender.com`.
 
 ### Frontend
 

@@ -21,7 +21,7 @@ function App() {
 
     try {
       // Backend URL - Adjust if needed
-      const res = await axios.post("http://localhost:5000/analyze", formData);
+      const res = await axios.post("https://codexa-backend-l5zg.onrender.com/analyze", formData);
       setData(res.data);
       setHasData(true);
       

@@ -31,7 +31,7 @@ const Dashboard = ({
         score = 0,
         level = "",
         dailyPlan = [],
-        weakTopics = [],
+        
         recommendations = [],
         comparison = [],
         percentile = 0,
@@ -56,7 +56,7 @@ const Dashboard = ({
             const token = localStorage.getItem("token");
 
             const response = await axios.post(
-                "http://localhost:5000/analysis/save",
+                "https://codexa-backend-l5zg.onrender.com/analysis/save",
                 {
                     leetcodeUsername: searchedUser,
 

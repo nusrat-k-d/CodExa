@@ -16,7 +16,7 @@ const Register = () => {
 
         try {
             const response = await axios.post(
-                "http://localhost:5000/auth/register",
+                "https://codexa-backend-l5zg.onrender.com/auth/register",
                 {
                     name,
                     email,

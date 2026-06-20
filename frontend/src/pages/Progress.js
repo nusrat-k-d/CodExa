@@ -20,7 +20,7 @@ const Progress = () => {
                 const token = localStorage.getItem("token");
 
                 const res = await axios.get(
-                    "http://localhost:5000/analysis/progress",
+                    "https://codexa-backend-l5zg.onrender.com/analysis/progress",
                     {
                         headers: {
                             Authorization: `Bearer ${token}`,

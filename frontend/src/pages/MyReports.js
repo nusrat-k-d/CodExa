@@ -15,7 +15,7 @@ const MyReports = () => {
       const token = localStorage.getItem("token");
 
       const response = await axios.get(
-        "http://localhost:5000/analysis/my-reports",
+        "https://codexa-backend-l5zg.onrender.com/analysis/my-reports",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -39,7 +39,7 @@ const MyReports = () => {
       const token = localStorage.getItem("token");
 
       await axios.delete(
-        `http://localhost:5000/analysis/${id}`,
+        `https://codexa-backend-l5zg.onrender.com/analysis/${id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

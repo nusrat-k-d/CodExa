@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+
 import React, { useState } from "react";
 import axios from "axios";
 import { Eye, EyeOff } from "lucide-react";
@@ -7,14 +7,14 @@ const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
-    const navigate = useNavigate();
+    
 
     const handleLogin = async (e) => {
         e.preventDefault();
 
         try {
             const response = await axios.post(
-                "http://localhost:5000/auth/login",
+                "https://codexa-backend-l5zg.onrender.com/auth/login",
                 {
                     email,
                     password,
