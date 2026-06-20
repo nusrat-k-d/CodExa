@@ -2,12 +2,13 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Eye, EyeOff } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
-    
+
 
     const handleLogin = async (e) => {
         e.preventDefault();
@@ -82,6 +83,15 @@ const Login = () => {
                 >
                     Login
                 </button>
+                <p className="text-center mt-4 text-sm text-gray-600">
+                    Don't have an account?{" "}
+                    <Link
+                        to="/register"
+                        className="text-black font-semibold hover:underline"
+                    >
+                        Register
+                    </Link>
+                </p>
             </form>
         </div>
     );

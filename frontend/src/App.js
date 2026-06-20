@@ -14,7 +14,7 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={token ? <Home /> : <Login />}
+          element={token ? <Home /> : <Register />}
         />
         <Route
           path="/reports"

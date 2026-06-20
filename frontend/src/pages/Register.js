@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Eye, EyeOff } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Register = () => {
     const [name, setName] = useState("");
@@ -89,6 +90,15 @@ const Register = () => {
                 >
                     Register
                 </button>
+                <p className="text-center mt-4 text-sm text-gray-600">
+                    Already have an account?{" "}
+                    <Link
+                        to="/login"
+                        className="text-black font-semibold hover:underline"
+                    >
+                        Login
+                    </Link>
+                </p>
             </form>
         </div>
     );
